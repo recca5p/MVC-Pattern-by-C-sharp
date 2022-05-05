@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Sign Up";
+}
+@model WebApplication1.Models.ModelAccount
+@using (Html.BeginForm("CheckPassword", "AccountManage", FormMethod.Post))
+{
+    <div>
+        <div style="padding: 40px 600px 40px 600px">
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "UserName" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Password" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Re-enter password</label>
+                    @Html.PasswordFor(m => m.repassword, new { @class = "form-control", placeholder = "Password" })
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+}

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model WebApplication1.Models.ModelProduct
+
+@using (Html.BeginForm("Add_product", "ProductManage", FormMethod.Post))
+{
+<div style="padding: 40px 40px 40px 40px">
+    <form>
+        <div class="form-group">
+            <label>Product Name</label>
+            @Html.HiddenFor(x => x.productID)
+            @Html.TextBoxFor(m => m.productName, new { @class = "form-control", placeholder = "Product name" })
+        </div>
+
+
+        <div class="form-group">
+            <label>Product Category</label>
+            @Html.TextBoxFor(m => m.productCategory, new { @class = "form-control", placeholder = "Product category" })
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", placeholder = "Quantity" })
+        </div>
+
+        <div class="form-group">
+            <label>Price</label>
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control", placeholder = "Price" })
+        </div>
+
+        <div class="form-group">
+            <label>Details</label>
+            @Html.TextAreaFor(m => m.Details, new { @class = "form-control", placeholder = "Details" })
+        </div>
+    </form>
+    <div style="padding-top:40px">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</div>
+
+}

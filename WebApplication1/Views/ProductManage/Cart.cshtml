@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+@model List<WebApplication1.Models.ModelCart>
+
+<h2>Cart</h2>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = 0;
+                foreach (var item in Model)
+                {
+                    decimal total = @item.price * @item.quantity;
+                    <tr>
+                        <td>@item.productName</td>
+                        <td>@item.price</td>
+                        <td>@Html.TextBoxFor(x => x[count].quantity)</td>
+                        <td>@total</td>
+                    </tr>
+                    count = count + 1;
+                }
+            }
+        </tbody>
+    </table>
+
+    <a href="~/ProductManage/Index">Back</a>
+    <input type="button" value="Order" />
+    <input type="button" value="Cancel" onclick="location.href = '@Url.Action("CancelCart","ProductManage")'" />
+</div>

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model List<WebApplication1.Models.ModelProduct>
+<div style="padding: 40px 40px 40px 40px">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="padding:40px">Product ID: </th>
+                <th scope="col" style="padding:40px">Product Name: </th>
+                <th scope="col" style="padding:40px">Product Category: </th>
+                <th scope="col" style="padding:40px">Quantity: </th>
+                <th scope="col" style="padding:40px">Price: </th>
+                <th scope="col" style="padding:40px">Details: </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <th scope="row" style="padding:40px">
+                        <a href="ProductManage/Update_product/@product.productID">@product.productID </a>
+                    </th>
+                    <td style="padding:40px">@product.productName</td>
+                    <td style="padding:40px">@product.productCategory</td>
+                    <td style="padding:40px">@product.Quantity</td>
+                    <td style="padding:40px">@product.Price.Value.ToString("#,###") VND </td>
+                    <td style="padding:40px">@product.Details</td>
+                    <td style="padding:40px"><input type="button" value="Mua hàng" onclick="location.href = '@Url.Action("Cart","ProductManage", new {id = product.productID})'"/></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div style="padding: 0px 0px 40px 40px">
+    <button class="btn btn-primary" onclick="location.href = '@Url.Action("Create", "ProductManage")'">Create</button>
+</div>
